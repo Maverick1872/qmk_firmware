@@ -66,3 +66,4 @@ id_rsa_*
 
 # python things
 __pycache__
+venv/
