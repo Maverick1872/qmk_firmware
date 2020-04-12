@@ -351,6 +351,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         rgblight_mode(1);
       }
       return false;
+    case KC_CAPS:
+      if (record->event.pressed) {
+        if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
+          ergodox_right_led_3_off();
+        } else {
+          ergodox_right_led_3_on();
+        }
+      }
   }
   return true;
 }
@@ -362,33 +370,21 @@ uint32_t layer_state_set_user(uint32_t state) {
   ergodox_board_led_off();
   ergodox_right_led_1_off();
   ergodox_right_led_2_off();
-  ergodox_right_led_3_off();
+  // right led 3 is caps lock indicator - layer change should not affect it.
+  // ergodox_right_led_3_off();
   switch (layer) {
-    case 1:
+    case WIN_BASE:
+      break;
+    case WIN_NAV:
       ergodox_right_led_1_on();
       break;
-    case 2:
-      ergodox_right_led_2_on();
+    case MAC_BASE:
       break;
-    case 3:
-      ergodox_right_led_3_on();
-      break;
-    case 4:
+    case MAC_NAV:
       ergodox_right_led_1_on();
-      ergodox_right_led_2_on();
       break;
-    case 5:
-      ergodox_right_led_1_on();
-      ergodox_right_led_3_on();
-      break;
-    case 6:
+    case NUMPAD:
       ergodox_right_led_2_on();
-      ergodox_right_led_3_on();
-      break;
-    case 7:
-      ergodox_right_led_1_on();
-      ergodox_right_led_2_on();
-      ergodox_right_led_3_on();
       break;
     default:
       break;
