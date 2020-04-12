@@ -42,7 +42,9 @@ enum {
 
 // Tap dance keycodes
 enum {
-  TD_SPC = 0
+  TD_SPC = 0,
+  TD_SCLN,
+  TD_SLSH
 };
 
 enum custom_keycodes {
@@ -81,9 +83,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
    * | TAB    |   Q  |   W  |   E  |   R  |   T  |  F6  |           |  -   |   Y  |   U  |   I  |   O  |   P  |   \    |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * | CAPS   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
+   * | CAPS   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  | TD ; |   '    |
    * |--------+------+------+------+------+------|  F8  |           |  &   |------+------+------+------+------+--------|
-   * | LShft( |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift)|
+   * | LShft( |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  | TD / | RShift)|
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
    * | LCTRL  | GRV  | LALT |  MO4 |  MO1 |                                       |  MO1 | MO4  |      |      | RCTRL  |
    * `------------------------------------'                                       `------------------------------------'
@@ -110,8 +112,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // RIGHT HAND
     KC_EQL,           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           XXXXXXX,
     KC_MINS,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,
-                      KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        KC_QUOT,
-    KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,        KC_RSPC,
+                      KC_H,           KC_J,           KC_K,           KC_L,           TD(TD_SCLN),    KC_QUOT,
+    KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         TD(TD_SLSH),    KC_RSPC,
                                       MO(WIN_NAV),    MO(NUMPAD),     KC_RALT,        XXXXXXX,        KC_RCTL,
     // RIGHT THUMB
     XXXXXXX,          XXXXXXX,
@@ -196,8 +198,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // RIGHT HAND
     KC_EQL,           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           XXXXXXX,
     KC_MINS,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,
-                      KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        KC_QUOT,
-    KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,        KC_RSPC,
+                      KC_H,           KC_J,           KC_K,           KC_L,           TD(TD_SCLN),    KC_QUOT,
+    KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         TD(TD_SLSH),    KC_RSPC,
                                       MO(MAC_NAV),    MO(NUMPAD),     KC_RALT,        XXXXXXX,        KC_RCTL,
     // RIGHT THUMB
     XXXXXXX,          XXXXXXX,
@@ -404,5 +406,7 @@ uint32_t layer_state_set_user(uint32_t state) {
 // Tap dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
   // Tap for ent, double tap for dot
-  [TD_SPC] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_DOT)
+  [TD_SPC] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_DOT),
+  [TD_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
+  [TD_SLSH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_QUES)
 };
