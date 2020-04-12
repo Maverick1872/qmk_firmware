@@ -71,11 +71,11 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /*
    * ,--------------------------------------------------.           ,--------------------------------------------------.
-   * | ESC    |   1  |   2  |   3  |   4  |   5  |  F4  |           |  =   |   6  |   7  |   8  |   9  |   0  |   +    |
+   * | GRV/ESC|   1  |   2  |   3  |   4  |   5  |  F4  |           |  =   |   6  |   7  |   8  |   9  |   0  |        |
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-   * | Del    |   Q  |   W  |   E  |   R  |   T  |  F6  |           |  -   |   Y  |   U  |   I  |   O  |   P  |   \    |
+   * | TAB    |   Q  |   W  |   E  |   R  |   T  |  F6  |           |  -   |   Y  |   U  |   I  |   O  |   P  |   \    |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * | BkSp   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
+   * | CAPS   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
    * |--------+------+------+------+------+------|  F8  |           |  &   |------+------+------+------+------+--------|
    * | LShft( |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift)|
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,           KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_F6,
     KC_CAPS,          KC_A,           KC_S,           KC_D,           KC_F,           KC_G,
     KC_LSPO,          KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_F8,
-    KC_LCTL,          XXXXXXX,        KC_LALT,        MO(NUMPAD),     MO(WIN_NAV),
+    KC_LCTL,          KC_GRV,         KC_LALT,        MO(NUMPAD),     MO(WIN_NAV),
     // LEFT THUMB
     TO(MAC_BASE),     XXXXXXX,
     XXXXXXX,
@@ -137,8 +137,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          WIN_CUT,
     XXXXXXX,          XXXXXXX,          KC_PGDN,          KC_VOLU,          KC_PGUP,          XXXXXXX,          WIN_COPY,
     XXXXXXX,          XXXXXXX,          KC_MPRV,          KC_MPLY,          KC_MNXT,          XXXXXXX,
-    XXXXXXX,          XXXXXXX,          XXXXXXX,          KC_VOLD,          XXXXXXX,          XXXXXXX,          WIN_PSTE,
-    XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          MO(WIN_NAV),
+    KC_TRNS,          XXXXXXX,          XXXXXXX,          KC_VOLD,          XXXXXXX,          XXXXXXX,          WIN_PSTE,
+    KC_TRNS,          XXXXXXX,          KC_TRNS,          XXXXXXX,          MO(WIN_NAV),
     // LEFT THUMB
     XXXXXXX,          XXXXXXX,
     XXXXXXX,
@@ -148,8 +148,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
     WIN_REDO,         XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          XXXXXXX,
                       KC_HOME,          KC_LEFT,          KC_DOWN,          KC_RGHT,          KC_END,           XXXXXXX,
-    WIN_UNDO,         XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
-                                        MO(WIN_NAV),      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+    WIN_UNDO,         XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          KC_TRNS,
+                                        MO(WIN_NAV),      XXXXXXX,          KC_TRNS,          XXXXXXX,          KC_TRNS,
     // RIGHT THUMB
     XXXXXXX,          XXXXXXX,
     XXXXXXX,
@@ -181,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,           KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_F6,
     KC_CAPS,          KC_A,           KC_S,           KC_D,           KC_F,           KC_G,
     KC_LSPO,          KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_F8,
-    KC_LCTL,          XXXXXXX,        KC_LALT,        MO(NUMPAD),     MO(MAC_NAV),
+    KC_LCTL,          KC_GRV,         KC_LALT,        MO(NUMPAD),     MO(MAC_NAV),
     // LEFT THUMB
     TO(WIN_BASE),     XXXXXXX,
     XXXXXXX,
@@ -224,7 +224,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,          XXXXXXX,          KC_PGDN,          KC_VOLU,          KC_PGUP,          XXXXXXX,          MAC_COPY,
     XXXXXXX,          XXXXXXX,          KC_MRWD,          KC_MPLY,          KC_MFFD,          XXXXXXX,
     XXXXXXX,          XXXXXXX,          XXXXXXX,          KC_VOLD,          XXXXXXX,          XXXXXXX,          MAC_PSTE,
-    XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          MO(MAC_NAV),
+    KC_TRNS,          XXXXXXX,          KC_TRNS,          XXXXXXX,          MO(MAC_NAV),
     // LEFT THUMB
     XXXXXXX,          XXXXXXX,
     XXXXXXX,
@@ -235,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MAC_REDO,         XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          XXXXXXX,
                       KC_HOME,          KC_LEFT,          KC_DOWN,          KC_RGHT,          KC_END,           XXXXXXX,
     MAC_UNDO,         XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
-                                        MO(MAC_NAV),      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+                                        MO(MAC_NAV),      XXXXXXX,          KC_TRNS,          XXXXXXX,          KC_TRNS,
     // RIGHT THUMB
     XXXXXXX,          XXXXXXX,
     XXXXXXX,
