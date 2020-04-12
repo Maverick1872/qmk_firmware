@@ -17,14 +17,14 @@
 #include "keymap_norwegian.h"
 #include "keymap_portuguese.h"
 
-// WINDOWS/LINUX CUSTOM KEYS
+// Windows/Linux custom keys
 #define WIN_CUT  C(KC_X)
 #define WIN_COPY C(KC_C)
 #define WIN_PSTE C(KC_V)
 #define WIN_UNDO C(KC_Z)
 #define WIN_REDO C(S(KC_Z))
 
-// MAC CUSTOM KEYS
+// MAC custom keys
 #define MAC_CUT  LGUI(KC_X)
 #define MAC_COPY LGUI(KC_C)
 #define MAC_PSTE LGUI(KC_V)
@@ -34,17 +34,23 @@
 // Layer definitions
 enum {
   WIN_BASE = 0,
-  WIN_NAV = 1,
-  MAC_BASE = 2,
-  MAC_NAV = 3,
-  NUMPAD = 4
+  WIN_NAV,
+  MAC_BASE,
+  MAC_NAV,
+  NUMPAD
+};
+
+// Tap dance keycodes
+enum {
+  TD_SPC = 0
 };
 
 enum custom_keycodes {
   RGB_SLD = EZ_SAFE_RANGE,
 };
 
-// EMPTY LAYOUT DOC
+
+// Empty layer layout doc
 /*
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -67,7 +73,7 @@ enum custom_keycodes {
 */
 
 
-// PROGRAM LAYERS
+// Program layers
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /*
    * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -85,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                        | TO 2 |      |       |      |       |
    *                                 ,------|------|------|       |------+-------+-------.
    *                                 |      |      |      |       |      |        |      |
-   *                                 | Space|  DEL |------|       |------| BCKSPC |Enter |
+   *                                 |TD SPC|  DEL |------|       |------| BCKSPC |Enter |
    *                                 |      |      | LWIN |       | RWIN |        |      |
    *                                 `--------------------'       `----------------------'
   */
@@ -99,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // LEFT THUMB
     TO(MAC_BASE),     XXXXXXX,
     XXXXXXX,
-    KC_SPC,           KC_DEL,         KC_LGUI,
+    TD(TD_SPC),       KC_DEL,         KC_LGUI,
 
     // RIGHT HAND
     KC_EQL,           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           XXXXXXX,
@@ -171,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                        | TO 2 |      |       |      |       |
    *                                 ,------|------|------|       |------+-------+-------.
    *                                 |      |      |      |       |      |        |      |
-   *                                 | Space|  DEL |------|       |------| BCKSPC |Enter |
+   *                                 |TD SPC|  DEL |------|       |------| BCKSPC | ENTER|
    *                                 |      |      | LWIN |       | RWIN |        |      |
    *                                 `--------------------'       `----------------------'
   */
@@ -185,7 +191,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // LEFT THUMB
     TO(WIN_BASE),     XXXXXXX,
     XXXXXXX,
-    KC_SPC,           KC_DEL,         KC_LGUI,
+    TD(TD_SPC),       KC_DEL,         KC_LGUI,
 
     // RIGHT HAND
     KC_EQL,           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           XXXXXXX,
@@ -294,6 +300,7 @@ void keyboard_post_init_user(void) {
   rgb_matrix_enable();
 }
 
+// RGB LED map per layer
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [0] = { {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255}, {147,119,255} },
 
@@ -344,6 +351,7 @@ void rgb_matrix_indicators_user(void) {
   }
 }
 
+// Runs on key event
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case RGB_SLD:
@@ -363,6 +371,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+// Runs on layer change
 uint32_t layer_state_set_user(uint32_t state) {
 
   uint8_t layer = biton32(state);
@@ -390,4 +399,10 @@ uint32_t layer_state_set_user(uint32_t state) {
       break;
   }
   return state;
+};
+
+// Tap dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  // Tap for ent, double tap for dot
+  [TD_SPC] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_DOT)
 };
