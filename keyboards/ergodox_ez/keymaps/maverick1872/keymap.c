@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         TD(TD_SLSH),    KC_RSPC,
                                       MO(WIN_NAV),    MO(NUMPAD),     KC_RALT,        XXXXXXX,        KC_RCTL,
     // RIGHT THUMB
-    XXXXXXX,          XXXXXXX,
+    RGB_VAD,          RGB_VAI,
     XXXXXXX,
     KC_RGUI,          KC_BSPC,        TD(TD_ENT)
   ),
@@ -143,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         TD(TD_SLSH),    KC_RSPC,
                                       MO(MAC_NAV),    MO(NUMPAD),     KC_RALT,        XXXXXXX,        KC_RCTL,
     // RIGHT THUMB
-    XXXXXXX,          XXXXXXX,
+    RGB_VAD,          RGB_VAI,
     XXXXXXX,
     KC_RGUI,          KC_BSPC,        TD(TD_ENT)
   ),

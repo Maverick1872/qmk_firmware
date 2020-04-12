@@ -47,7 +47,7 @@ Alternatively you can use the following if you want to build a non default keyma
  | LCTRL  | GRV  | LALT |  MO4 |  MO1 |                                       |  MO1 | MO4  |      |      | RCTRL  |
  `------------------------------------'                                       `------------------------------------'
                                         ,-------------.       ,--------------.
-                                        | TO 2 |      |       |      |       |
+                                        | TO 2 |      |       |BL DWN| BL UP |
                                  ,------|------|------|       |------+-------+-------.
                                  |      |      |      |       |      |        |      |
                                  | SPC  |  DEL |------|       |------| BCKSPC |TD ENT|
@@ -94,7 +94,7 @@ Alternatively you can use the following if you want to build a non default keyma
 | LCTRL  | GRV  | LALT |  MO4 |  MO3 |                                       |  MO3 | MO4  |      |      | RCTRL  |
 `------------------------------------'                                       `------------------------------------'
                                        ,-------------.       ,--------------.
-                                       | TO 2 |      |       |      |       |
+                                       | TO 2 |      |       |BL DWN| BL UP |
                                 ,------|------|------|       |------+-------+-------.
                                 |      |      |      |       |      |        |      |
                                 | SPC  |  DEL |------|       |------| BCKSPC |TD ENT|
