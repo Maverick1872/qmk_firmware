@@ -42,9 +42,10 @@ enum {
 
 // Tap dance keycodes
 enum {
-  TD_SPC = 0,
+  TD_ENT = 0,
   TD_SCLN,
-  TD_SLSH
+  TD_SLSH,
+  TD_QUOT
 };
 
 enum custom_keycodes {
@@ -83,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
    * | TAB    |   Q  |   W  |   E  |   R  |   T  |  F6  |           |  -   |   Y  |   U  |   I  |   O  |   P  |   \    |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * | CAPS   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  | TD ; |   '    |
+   * | CAPS   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  | TD ; |  TD '  |
    * |--------+------+------+------+------+------|  F8  |           |  &   |------+------+------+------+------+--------|
    * | LShft( |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  | TD / | RShift)|
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -93,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                        | TO 2 |      |       |      |       |
    *                                 ,------|------|------|       |------+-------+-------.
    *                                 |      |      |      |       |      |        |      |
-   *                                 |TD SPC|  DEL |------|       |------| BCKSPC |Enter |
+   *                                 | SPC  |  DEL |------|       |------| BCKSPC |TD ENT|
    *                                 |      |      | LWIN |       | RWIN |        |      |
    *                                 `--------------------'       `----------------------'
   */
@@ -107,18 +108,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // LEFT THUMB
     TO(MAC_BASE),     XXXXXXX,
     XXXXXXX,
-    TD(TD_SPC),       KC_DEL,         KC_LGUI,
+    KC_SPC,       KC_DEL,         KC_LGUI,
 
     // RIGHT HAND
     KC_EQL,           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           XXXXXXX,
     KC_MINS,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,
-                      KC_H,           KC_J,           KC_K,           KC_L,           TD(TD_SCLN),    KC_QUOT,
+                      KC_H,           KC_J,           KC_K,           KC_L,           TD(TD_SCLN),    TD(TD_QUOT),
     KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         TD(TD_SLSH),    KC_RSPC,
                                       MO(WIN_NAV),    MO(NUMPAD),     KC_RALT,        XXXXXXX,        KC_RCTL,
     // RIGHT THUMB
     XXXXXXX,          XXXXXXX,
     XXXXXXX,
-    KC_RGUI,          KC_BSPC,        KC_ENT
+    KC_RGUI,          KC_BSPC,        TD(TD_ENT)
   ),
   /*
    * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -169,9 +170,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
    * | Del    |   Q  |   W  |   E  |   R  |   T  |  F6  |           |  -   |   Y  |   U  |   I  |   O  |   P  |   \    |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * | BkSp   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
+   * | BkSp   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  | TD ; |  TD '  |
    * |--------+------+------+------+------+------|  F8  |           |  &   |------+------+------+------+------+--------|
-   * | LShft( |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift)|
+   * | LShft( |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  | TD / | RShift)|
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
    * | LCTRL  | GRV  | LALT |  MO4 |  MO1 |                                       |  MO1 | MO4  |      |      | RCTRL  |
    * `------------------------------------'                                       `------------------------------------'
@@ -179,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                        | TO 2 |      |       |      |       |
    *                                 ,------|------|------|       |------+-------+-------.
    *                                 |      |      |      |       |      |        |      |
-   *                                 |TD SPC|  DEL |------|       |------| BCKSPC | ENTER|
+   *                                 | SPC  |  DEL |------|       |------| BCKSPC |TD ENT|
    *                                 |      |      | LWIN |       | RWIN |        |      |
    *                                 `--------------------'       `----------------------'
   */
@@ -193,18 +194,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // LEFT THUMB
     TO(WIN_BASE),     XXXXXXX,
     XXXXXXX,
-    TD(TD_SPC),       KC_DEL,         KC_LGUI,
+    KC_SPC,       KC_DEL,         KC_LGUI,
 
     // RIGHT HAND
     KC_EQL,           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           XXXXXXX,
     KC_MINS,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,
-                      KC_H,           KC_J,           KC_K,           KC_L,           TD(TD_SCLN),    KC_QUOT,
+                      KC_H,           KC_J,           KC_K,           KC_L,           TD(TD_SCLN),    TD(TD_QUOT),
     KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         TD(TD_SLSH),    KC_RSPC,
                                       MO(MAC_NAV),    MO(NUMPAD),     KC_RALT,        XXXXXXX,        KC_RCTL,
     // RIGHT THUMB
     XXXXXXX,          XXXXXXX,
     XXXXXXX,
-    KC_RGUI,          KC_BSPC,        KC_ENT
+    KC_RGUI,          KC_BSPC,        TD(TD_ENT)
   ),
   /*
    * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -406,7 +407,8 @@ uint32_t layer_state_set_user(uint32_t state) {
 // Tap dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
   // Tap for ent, double tap for dot
-  [TD_SPC] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_DOT),
+  [TD_ENT] = ACTION_TAP_DANCE_DOUBLE(KC_ENT, KC_DOT),
   [TD_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
-  [TD_SLSH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_QUES)
+  [TD_SLSH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_QUES),
+  [TD_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_DQUO)
 };
