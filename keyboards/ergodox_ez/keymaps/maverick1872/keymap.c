@@ -28,6 +28,11 @@
 #define MAC_NAV 3   // mac navigation
 #define NUMPAD 4    // numpad
 
+enum custom_keycodes {
+  RGB_SLD = EZ_SAFE_RANGE,
+};
+
+
 // EMPTY LAYOUT DOC
 /*
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -50,28 +55,145 @@
  *                                 `--------------------'       `----------------------'
 */
 
-// WINDOWS BASE LAYER
-/*
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * | ESC    |   1  |   2  |   3  |   4  |   5  |  F4  |           |  =   |   6  |   7  |   8  |   9  |   0  |   +    |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Del    |   Q  |   W  |   E  |   R  |   T  |  F6  |           |  -   |   Y  |   U  |   I  |   O  |   P  |   \    |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | BkSp   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
- * |--------+------+------+------+------+------|  F8  |           |  &   |------+------+------+------+------+--------|
- * | LShft( |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift)|
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- * | LCTRL  | GRV  | LALT |  MO4 |  MO1 |                                       |  MO1 | MO4  |      |      | RCTRL  |
- * `------------------------------------'                                       `------------------------------------'
- *                                        ,-------------.       ,--------------.
- *                                        | TO 2 |      |       |      |       |
- *                                 ,------|------|------|       |------+-------+-------.
- *                                 |      |      |      |       |      |        |      |
- *                                 | Space|  DEL |------|       |------| BCKSPC |Enter |
- *                                 |      |      | LWIN |       | RWIN |        |      |
- *                                 `--------------------'       `----------------------'
-*/
-#define WIN_BASE_LAYER LAYOUT_ergodox(
+//// WINDOWS BASE LAYER
+///*
+// * ,--------------------------------------------------.           ,--------------------------------------------------.
+// * | ESC    |   1  |   2  |   3  |   4  |   5  |  F4  |           |  =   |   6  |   7  |   8  |   9  |   0  |   +    |
+// * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+// * | Del    |   Q  |   W  |   E  |   R  |   T  |  F6  |           |  -   |   Y  |   U  |   I  |   O  |   P  |   \    |
+// * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+// * | BkSp   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
+// * |--------+------+------+------+------+------|  F8  |           |  &   |------+------+------+------+------+--------|
+// * | LShft( |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift)|
+// * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+// * | LCTRL  | GRV  | LALT |  MO4 |  MO1 |                                       |  MO1 | MO4  |      |      | RCTRL  |
+// * `------------------------------------'                                       `------------------------------------'
+// *                                        ,-------------.       ,--------------.
+// *                                        | TO 2 |      |       |      |       |
+// *                                 ,------|------|------|       |------+-------+-------.
+// *                                 |      |      |      |       |      |        |      |
+// *                                 | Space|  DEL |------|       |------| BCKSPC |Enter |
+// *                                 |      |      | LWIN |       | RWIN |        |      |
+// *                                 `--------------------'       `----------------------'
+//*/
+//#define WIN_BASE_LAYER LAYOUT_ergodox(
+// // LEFT HAND
+// KC_GESC,          KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_F4,
+// KC_TAB,           KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_F6,
+// KC_CAPS,          KC_A,           KC_S,           KC_D,           KC_F,           KC_G,
+// KC_LSPO,          KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_F8,
+// KC_LCTL,          XXXXXXX,        KC_LALT,        MO(NUMPAD),     MO(WIN_NAV),
+// // LEFT THUMB
+// TO(MAC_BASE),     XXXXXXX,
+// XXXXXXX,
+// KC_SPC,           KC_DEL,         KC_LGUI,
+//
+// // RIGHT HAND
+// KC_EQL,           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           XXXXXXX,
+// KC_MINS,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,
+//                   KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        KC_QUOT,
+// KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,        KC_RSPC,
+//                                   MO(WIN_NAV),    MO(NUMPAD),     KC_RALT,        XXXXXXX,        KC_RCTL,
+// // RIGHT THUMB
+// XXXXXXX,          XXXXXXX,
+// XXXXXXX,
+// KC_RGUI,          KC_BSPC,        KC_ENT
+//)
+//
+///* WIN NAV
+// *
+// * ,--------------------------------------------------.           ,--------------------------------------------------.
+// * |        |      |      |      |      |      | CUT  |           |      |      |      |      |      |      |        |
+// * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+// * |        |      | PGDN | VOLU | PGUP |      | COPY |           | REDO |      |   [  |  UP  |   ]  |      |        |
+// * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+// * |        |      | PREV | PLPS | NEXT |      |------|           |------| HOME | LEFT | DOWN | RIGHT| END  |        |
+// * |--------+------+------+------+------+------| PASTE|           | UNDO |------+------+------+------+------+--------|
+// * |        |      |      | VOLD |      |      |      |           |      |      |      |      |      |      |        |
+// * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+// * |        |      |      |      |      |                                       |      |      |      |      |        |
+// * `------------------------------------'                                       `------------------------------------'
+// *                                        ,-------------.       ,--------------.
+// *                                        |      |      |       |      |       |
+// *                                 ,------|------|------|       |------+-------+-------.
+// *                                 |      |      |      |       |      |        |      |
+// *                                 |      |      |------|       |------|        |      |
+// *                                 |      |      |      |       |      |        |      |
+// *                                 `--------------------'       `----------------------'
+//*/
+//#define WIN_NAV_LAYER LAYOUT_ergodox(
+// // LEFT HAND
+// XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          KC_CUT,
+// XXXXXXX,          XXXXXXX,          KC_PGDN,          KC_VOLU,          KC_PGUP,          XXXXXXX,          KC_COPY,
+// XXXXXXX,          XXXXXXX,          KC_MPRV,          KC_MPLY,          KC_MNXT,          XXXXXXX,
+// XXXXXXX,          XXXXXXX,          XXXXXXX,          KC_VOLD,          XXXXXXX,          XXXXXXX,          KC_PSTE,
+// XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          MO(WIN_NAV),
+// // LEFT THUMB
+// XXXXXXX,          XXXXXXX,
+// XXXXXXX,
+// XXXXXXX,          XXXXXXX,          XXXXXXX,
+//
+// // RIGHT HAND
+// XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+// WIN_UNDO,         XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+//                   XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          XXXXXXX,
+// WIN_REDO,         KC_HOME,          KC_LEFT,          KC_DOWN,          KC_RGHT,          KC_END,           XXXXXXX,
+//                                     MO(WIN_NAV),      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+// // RIGHT THUMB
+// XXXXXXX,          XXXXXXX,
+// XXXXXXX,
+// XXXXXXX,          XXXXXXX,          XXXXXXX
+//)
+//
+///* WIN NAV
+// *
+// * ,--------------------------------------------------.           ,--------------------------------------------------.
+// * |        |      |      |      |      |      | CUT  |           |      |      |      |      |      |      |        |
+// * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+// * |        |      | PGDN | VOLU | PGUP |      | COPY |           | REDO |      |   [  |  UP  |   ]  |      |        |
+// * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+// * |        |      | PREV | PLPS | NEXT |      |------|           |------| HOME | LEFT | DOWN | RIGHT| END  |        |
+// * |--------+------+------+------+------+------| PASTE|           | UNDO |------+------+------+------+------+--------|
+// * |        |      |      | VOLD |      |      |      |           |      |      |      |      |      |      |        |
+// * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+// * |        |      |      |      |      |                                       |      |      |      |      |        |
+// * `------------------------------------'                                       `------------------------------------'
+// *                                        ,-------------.       ,--------------.
+// *                                        |      |      |       |      |       |
+// *                                 ,------|------|------|       |------+-------+-------.
+// *                                 |      |      |      |       |      |        |      |
+// *                                 |      |      |------|       |------|        |      |
+// *                                 |      |      |      |       |      |        |      |
+// *                                 `--------------------'       `----------------------'
+//*/
+//#define NUMPAD_LAYER LAYOUT_ergodox(
+// // LEFT HAND
+// XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+// XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+// XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+// XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+// XXXXXXX,          XXXXXXX,          XXXXXXX,          MO(NUMPAD),       XXXXXXX,
+// // LEFT THUMB
+// XXXXXXX,          XXXXXXX,
+// XXXXXXX,
+// XXXXXXX,          XXXXXXX,          XXXXXXX,
+//
+// // RIGHT HAND
+// XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+// XXXXXXX,          XXXXXXX,          KC_7,             KC_8,             KC_9,             XXXXXXX,          XXXXXXX,
+//                   XXXXXXX,          KC_4,             KC_5,             KC_6,             XXXXXXX,          XXXXXXX,
+// XXXXXXX,          XXXXXXX,          KC_1,             KC_2,             KC_3,             XXXXXXX,          XXXXXXX,
+//                                     KC_0,             MO(NUMPAD),       XXXXXXX,          XXXXXXX,          XXXXXXX,
+// // RIGHT THUMB
+// KC_SLEP,          XXXXXXX,
+// XXXXXXX,
+// XXXXXXX,          KC_BSPC,          KC_DOT
+//)
+
+
+// PROGRAM LAYERS
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  [WIN_BASE] = LAYOUT_ergodox(
  // LEFT HAND
  KC_GESC,          KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_F4,
  KC_TAB,           KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_F6,
@@ -87,40 +209,18 @@
  KC_EQL,           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           XXXXXXX,
  KC_MINS,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,
                    KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        KC_QUOT,
- KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,        KC_RSPO,
+ KC_AMPR,          KC_N,           KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,        KC_RSPC,
                                    MO(WIN_NAV),    MO(NUMPAD),     KC_RALT,        XXXXXXX,        KC_RCTL,
  // RIGHT THUMB
  XXXXXXX,          XXXXXXX,
  XXXXXXX,
  KC_RGUI,          KC_BSPC,        KC_ENT
-)
-
-/* WIN NAV
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      | CUT  |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      | PGDN | VOLU | PGUP |      | COPY |           | REDO |      |   [  |  UP  |   ]  |      |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      | PREV | PLPS | NEXT |      |------|           |------| HOME | LEFT | DOWN | RIGHT| END  |        |
- * |--------+------+------+------+------+------| PASTE|           | UNDO |------+------+------+------+------+--------|
- * |        |      |      | VOLD |      |      |      |           |      |      |      |      |      |      |        |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- * |        |      |      |      |      |                                       |      |      |      |      |        |
- * `------------------------------------'                                       `------------------------------------'
- *                                        ,-------------.       ,--------------.
- *                                        |      |      |       |      |       |
- *                                 ,------|------|------|       |------+-------+-------.
- *                                 |      |      |      |       |      |        |      |
- *                                 |      |      |------|       |------|        |      |
- *                                 |      |      |      |       |      |        |      |
- *                                 `--------------------'       `----------------------'
-*/
-#define WIN_NAV_LAYER LAYOUT_ergodox(
+),
+  [WIN_NAV]  = LAYOUT_ergodox(
  // LEFT HAND
  XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          KC_CUT,
  XXXXXXX,          XXXXXXX,          KC_PGDN,          KC_VOLU,          KC_PGUP,          XXXXXXX,          KC_COPY,
- XXXXXXX,          XXXXXXX,          KC_MPRV,          KC_PLPS,          KC_MNXT,          XXXXXXX,
+ XXXXXXX,          XXXXXXX,          KC_MPRV,          KC_MPLY,          KC_MNXT,          XXXXXXX,
  XXXXXXX,          XXXXXXX,          XXXXXXX,          KC_VOLD,          XXXXXXX,          XXXXXXX,          KC_PSTE,
  XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          MO(WIN_NAV),
  // LEFT THUMB
@@ -138,30 +238,8 @@
  XXXXXXX,          XXXXXXX,
  XXXXXXX,
  XXXXXXX,          XXXXXXX,          XXXXXXX
-)
-
-/* WIN NAV
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      | CUT  |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      | PGDN | VOLU | PGUP |      | COPY |           | REDO |      |   [  |  UP  |   ]  |      |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      | PREV | PLPS | NEXT |      |------|           |------| HOME | LEFT | DOWN | RIGHT| END  |        |
- * |--------+------+------+------+------+------| PASTE|           | UNDO |------+------+------+------+------+--------|
- * |        |      |      | VOLD |      |      |      |           |      |      |      |      |      |      |        |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- * |        |      |      |      |      |                                       |      |      |      |      |        |
- * `------------------------------------'                                       `------------------------------------'
- *                                        ,-------------.       ,--------------.
- *                                        |      |      |       |      |       |
- *                                 ,------|------|------|       |------+-------+-------.
- *                                 |      |      |      |       |      |        |      |
- *                                 |      |      |------|       |------|        |      |
- *                                 |      |      |      |       |      |        |      |
- *                                 `--------------------'       `----------------------'
-*/
-#define NUMPAD_LAYER LAYOUT_ergodox(
+),
+  [NUMPAD]   = LAYOUT_ergodox(
  // LEFT HAND
  XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
  XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
@@ -184,17 +262,6 @@
  XXXXXXX,
  XXXXXXX,          KC_BSPC,          KC_DOT
 )
-
-
-enum custom_keycodes {
-  RGB_SLD = EZ_SAFE_RANGE,
-};
-
-// PROGRAM LAYERS
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [WIN_BASE] = WIN_BASE_LAYER,
-  [WIN_NAV]  = WIN_NAV_LAYER
-  [NUMPAD]   = NUMPAD_LAYER
 };
 
 
