@@ -146,9 +146,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // RIGHT HAND
     XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
-    WIN_UNDO,         XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          XXXXXXX,
+    WIN_REDO,         XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          XXXXXXX,
                       KC_HOME,          KC_LEFT,          KC_DOWN,          KC_RGHT,          KC_END,           XXXXXXX,
-    WIN_REDO,         XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+    WIN_UNDO,         XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
                                         MO(WIN_NAV),      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
     // RIGHT THUMB
     XXXXXXX,          XXXXXXX,
@@ -232,9 +232,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // RIGHT HAND
     XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
-    MAC_UNDO,         XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          XXXXXXX,
+    MAC_REDO,         XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          XXXXXXX,
                       KC_HOME,          KC_LEFT,          KC_DOWN,          KC_RGHT,          KC_END,           XXXXXXX,
-    MAC_REDO,         XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
+    MAC_UNDO,         XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
                                         MO(MAC_NAV),      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
     // RIGHT THUMB
     XXXXXXX,          XXXXXXX,
