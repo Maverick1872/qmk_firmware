@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [WIN_NAV]  = LAYOUT_ergodox(
     // LEFT HAND
-    XXXXXXX,          KC_FN1,           KC_FN2,           KC_FN3,           KC_FN4,           KC_FN5,           WIN_CUT,
+    XXXXXXX,          KC_F1,            KC_F2,            KC_F3,            KC_F4,            KC_F5,            WIN_CUT,
     XXXXXXX,          XXXXXXX,          KC_PGDN,          KC_VOLU,          KC_PGUP,          XXXXXXX,          WIN_COPY,
     XXXXXXX,          XXXXXXX,          KC_MPRV,          KC_MPLY,          KC_MNXT,          XXXXXXX,
     KC_TRNS,          XXXXXXX,          XXXXXXX,          KC_VOLD,          XXXXXXX,          XXXXXXX,          WIN_PSTE,
@@ -114,8 +114,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,          XXXXXXX,          XXXXXXX,
 
     // RIGHT HAND
-    XXXXXXX,          KC_FN6,           KC_FN7,           KC_FN8,           KC_FN9,           KC_FN10,          XXXXXXX,
-    WIN_REDO,         XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          XXXXXXX,
+    XXXXXXX,          KC_F6,            KC_F7,            KC_F8,            KC_F9,            KC_F10,           KC_F11,
+    WIN_REDO,         XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          KC_F12,
                       KC_HOME,          KC_LEFT,          KC_DOWN,          KC_RGHT,          KC_END,           XXXXXXX,
     WIN_UNDO,         XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          KC_TRNS,
                                         MO(WIN_NAV),      XXXXXXX,          KC_TRNS,          XXXXXXX,          KC_TRNS,
@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [MAC_NAV]  = LAYOUT_ergodox(
     // LEFT HAND
-    XXXXXXX,          KC_FN1,           KC_FN2,           KC_FN3,           KC_FN4,           KC_FN5,           MAC_CUT,
+    XXXXXXX,          KC_F1,            KC_F2,            KC_F3,            KC_F4,            KC_F5,            MAC_CUT,
     XXXXXXX,          XXXXXXX,          KC_PGDN,          KC_VOLU,          KC_PGUP,          XXXXXXX,          MAC_COPY,
     XXXXXXX,          XXXXXXX,          KC_MRWD,          KC_MPLY,          KC_MFFD,          XXXXXXX,
     XXXXXXX,          XXXXXXX,          XXXXXXX,          KC_VOLD,          XXXXXXX,          XXXXXXX,          MAC_PSTE,
@@ -160,8 +160,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,          XXXXXXX,          XXXXXXX,
 
     // RIGHT HAND
-    XXXXXXX,          KC_FN6,           KC_FN7,           KC_FN8,           KC_FN9,           KC_FN10,          XXXXXXX,
-    MAC_REDO,         XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          XXXXXXX,
+    XXXXXXX,          KC_F6,            KC_F7,            KC_F8,            KC_F9,            KC_F10,           KC_F11,
+    MAC_REDO,         XXXXXXX,          KC_LBRC,          KC_UP,            KC_RBRC,          XXXXXXX,          KC_F12,
                       KC_HOME,          KC_LEFT,          KC_DOWN,          KC_RGHT,          KC_END,           XXXXXXX,
     MAC_UNDO,         XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,
                                         MO(MAC_NAV),      XXXXXXX,          KC_TRNS,          XXXXXXX,          KC_TRNS,
